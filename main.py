@@ -168,11 +168,12 @@ def blog(blog_id):
     blogpost = Blog.query.filter(Blog.id == blogId).first()
     return render_template('blogpost.html', blogpost=blogpost)
 
-@app.route('/userpost/<username>')
-def userpost(username):
-    user_name = username
-    
-    usernames = Blog.query.filter(Blog.owner.username == user_name).first()
+@app.route('/userpost/<int:user_id>')
+def userpost(user_id):
+
+    username = user_id
+
+    usernames = Blog.query.filter(Blog.owner_id == username).all()
     return render_template('userpost.html', usernames=usernames)
 
 

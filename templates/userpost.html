@@ -4,11 +4,11 @@
     <br>
     <h1>blog posts!</h1>
 
-    {% for username in usernames %}
-        <h2><a href="/blogpost/{{ blog.id }}">{{ username.title }}</a></h2>
-        <p>{{ blog.body }}</p>
-        <p>written by: {{ username.username }}</p>
-            
+    {% for user in usernames %}
+        <h2><a href="/blogpost/{{user.id}}">{{ user.title }}</a></h2>
+        <p>{{ user.body }}</p>
+        <p>written by: <a href="/userpost/{{user.owner.id}}">{{ user.owner.username }}</a></p>
+         
     {% endfor %}
 
 {% endblock %}
